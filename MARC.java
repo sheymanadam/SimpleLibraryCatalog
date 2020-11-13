@@ -15,11 +15,7 @@ import java.io.FileOutputStream;
 
 class MARC {
 
-    public void main(String[] args) {
-        importMarcRecords("1.mrc");
-    }
-
-    public static void importMarcRecords(String inputMarc) {
+    public void importMarcRecords(String inputMarc) {
         InputStream in = null;
         OutputStream out = null;
         try {

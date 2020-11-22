@@ -6,9 +6,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-class MarcJSONImport{
+class MarcImport{
 
-    public static boolean read(String marcFileName){
+    public boolean read(String marcFileName){
 
         try{
             InputStream in = new FileInputStream("import/" + marcFileName); //(currentDir + "/" + marcFileName);

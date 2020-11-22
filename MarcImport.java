@@ -10,24 +10,34 @@ import java.io.InputStream;
 
 class MarcImport{
 
-    public boolean read(String marcFileName){
-
+    public int read(String marcFileName){
+        int recCount = 0;
         try{
             InputStream in = new FileInputStream("import/" + marcFileName); //(currentDir + "/" + marcFileName);
             MarcReader reader = new MarcStreamReader(in);
             while (reader.hasNext()) {
-                Record record = reader.next();
-                DataField title = (DataField) record.getVariableField("245");
-                System.out.println(title);
+                
+                try{
+                    Record record = reader.next();
+                    DataField title = (DataField) record.getVariableField("245");
+                    System.out.println(title);
+                }catch(Exception e){
+                    System.out.println("There was an error processing this record. Skipping it." + e.getMessage());
+                    continue;
+                }
+                recCount++;
             }
             in.close();
         }catch(FileNotFoundException e){
             System.out.println(marcFileName + " not found. Files must be put in an import folder under this class file.");
-            return false;
+            return 0;
         }catch(IOException e){
-            System.out.println("IO Error");
+            System.out.println("IO Error " + e.getMessage());
+            return 0;
+        }catch(Exception e){
+            System.out.println("WHAT HAPPENED? " + e.getMessage());
         }
-        return true;
+        return recCount;
     }
 
 }

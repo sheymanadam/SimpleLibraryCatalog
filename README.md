@@ -4,3 +4,8 @@
 
 There is a library Marc4j needed for proccessing the book records. You'll need to add that to your CLASSPATH. 
 
+# Compile:
+javac --classpath lib\marc4j.jar *.java
+
+# Run:
+java -classpath lib\marc4j.jar;. SimpleLibraryCatalog

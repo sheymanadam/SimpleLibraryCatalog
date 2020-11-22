@@ -9,3 +9,8 @@ javac --classpath lib\marc4j.jar *.java
 
 # Run:
 java -classpath lib\marc4j.jar;. SimpleLibraryCatalog
+
+# MARC Records:
+The records being imported are in MARC format (This is the format pretty much all libraries and library automation systems use). A good source of records is:
+
+http://metadata.springernature.com/metadata/books

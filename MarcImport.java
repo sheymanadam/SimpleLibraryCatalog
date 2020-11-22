@@ -9,13 +9,13 @@ import java.io.InputStream;
 class MarcJSONImport{
 
     public static boolean read(String marcFileName){
-        String currentDir = System.getProperty("user.dir") + "/import";
 
         try{
             InputStream in = new FileInputStream("import/" + marcFileName); //(currentDir + "/" + marcFileName);
             MarcReader reader = new MarcStreamReader(in);
             while (reader.hasNext()) {
                 Record record = reader.next();
+                System.out.println(record.toString());
             }
         }catch(FileNotFoundException e){
             System.out.println(marcFileName + " not found. Files must be put in an import folder under this class file.");

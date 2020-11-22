@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-}class MarcJSONImport{
+class MarcJSONImport{
 
     public static boolean read(String marcFileName){
         String currentDir = System.getProperty("user.dir") + "/import";
@@ -21,6 +21,7 @@ import java.io.InputStream;
             System.out.println(marcFileName + " not found. Files must be put in an import folder under this class file.");
             return false;
         }
+        return true;
     }
 
 }

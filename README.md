@@ -14,3 +14,12 @@ java -classpath lib\marc4j.jar;. SimpleLibraryCatalog
 The records being imported are in MARC format (This is the format pretty much all libraries and library automation systems use). A good source of records is:
 
 http://metadata.springernature.com/metadata/books
+
+If you would like to see what the tags mean:
+
+https://www.loc.gov/marc/bibliographic/
+
+
+# Basic Usage
+
+(See demo code in main class)

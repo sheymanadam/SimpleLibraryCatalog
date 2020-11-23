@@ -1,4 +1,4 @@
-# teamdlibrary
+# Simple Library Catalog (Team D)
 
 (Please see the PROPOSAL doc for details about this project).
 

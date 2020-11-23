@@ -39,14 +39,16 @@ class SimpleLibraryCatalog{
             book = mi.getBookData(record);
 
             //I am printing out the available values.
-            //Delete this print statements in your actual function.
+            //Delete these print statements and put the key and value into your data structure.
             System.out.println(book.get("title"));
             System.out.println(book.get("author"));
             System.out.println(book.get("loc_call_number") + "\n");
             System.out.println(book.get("description"));
-
+            //book.get("available"); true or false string
+            //book.get("user_id"); id string from user record.
+            
             //Do this if you only want a certain number of records.
-            //Here we will stop at 500.
+            //Here we will stop at 500. Default is to bring them ALL in (>2000)
             if(count == 500) break;
             count++;
         }

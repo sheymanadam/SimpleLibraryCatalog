@@ -72,6 +72,9 @@ class MarcImport{
         
             }
         }
+        //We need a couple of standard fields:
+        book.put("available", "true");
+        book.put("patron_id", "");
         return book;
     }
 

@@ -1,5 +1,12 @@
 
+import java.util.HashMap;
+
 class HashCatalog implements LibraryCatalog{
+    HashMap<String, HashMap<String, String>> Catalog;
+    public void LibraryCatalog(){
+        Catalog = new HashMap<String, HashMap<String, String>>();
+
+    }
 
     @Override
     public boolean deleteBook(String loc){
@@ -15,7 +22,7 @@ class HashCatalog implements LibraryCatalog{
     }
 
     @Override
-    public boolean addBook() {
+    public boolean addBook(Book book) {
         System.out.println("HELLO WORLD");
         return false;
     }

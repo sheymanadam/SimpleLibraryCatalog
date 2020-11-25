@@ -13,12 +13,15 @@ class SimpleLibraryCatalog {
 
         MarcImport mi = new MarcImport(FILENAME);
 
-        //In this section, instantiate your object and, if you want to have things
-        //a bit easier, name it libraryDataObject. Otherwise you will need to go to the 
-        //end of this function and put your name in there.
-        //Comment out the other data structers so that only yours is being used. We can only 
-        //Do one at a time.
+        /*
+            In this section, instantiate your object. Call it "libraryDataObject".
+            This will allow the rest of the code to do its thing without changing any other
+            variable. 
 
+            Comment out the other data structers so that only yours is being used. We can only 
+            Do one at a time.
+        */
+        
         // Tree
         // HashMap (Brian's)
         HashCatalog libraryDataObject = new HashCatalog();
@@ -47,7 +50,7 @@ class SimpleLibraryCatalog {
                  book.available; true or false string
                  patronId; id string from user record.
             */
-        
+            libraryDataObject.addBook(book);
     
             // Do this if you only want a certain number of records.
             // Here we will stop at 500. Default is to bring them ALL in (>2000)
@@ -63,7 +66,7 @@ class SimpleLibraryCatalog {
         try {
             processLibrary(libraryDataObject);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println(e);
             return;
         }
 
@@ -89,15 +92,18 @@ class SimpleLibraryCatalog {
         printMainMenu();
        
         Class<?> clazz = object.getClass();
-        
-        Method addBook = clazz.getMethod("addBook");
-        
-        Class[] cArg = new Class[1];
-        cArg[0] = String.class;
+                
+        Class[] cArg1 = new Class[1];
+        cArg1[0] = String.class;
 
-        Method searchBook = clazz.getMethod("searchBook", cArg);
-        Method deleteBook = clazz.getMethod("deleteBook", cArg);
+        Method searchBook = clazz.getMethod("searchBook", cArg1);
+        Method deleteBook = clazz.getMethod("deleteBook", cArg1);
 
+        Class[] cArg2 = new Class[1];
+        cArg2[0] = Book.class;
+
+        Method addBook = clazz.getMethod("addBook", cArg2);
+                
         Scanner scan = new Scanner(System.in);  
         while(answer.equals("quit") != true){
             System.out.print("Enter command:> ");
@@ -116,7 +122,8 @@ class SimpleLibraryCatalog {
                     //searchPatron();
                     break;
                 case "add book":
-                    addBook.invoke(object);  
+                    Book book = new Book();
+                    addBook.invoke(object, book);  
                     break;
                 case "delete book":
                     System.out.print("Enter title to search for:>> ");

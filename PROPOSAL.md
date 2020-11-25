@@ -28,7 +28,7 @@ Bulk import. In order to perform any substantial analysis, we will need a suffic
 Data structures and algorithms
 The following ADT and/or algorithms will be used to demonstrate various aspects of the program, especially determining the most efficient methodology for successfully implementing the above use cases [Note, we will be focusing on the cards primarily and will be using them for a majority of the analyses. When appropriate, library patrons may be mentioned and analysed in reference to the analysis of the cards. But they will not be the primary focus for this project].
 
-Red-blue binary tree
+Red-black binary tree
 HashMap   
 Linked list (Ordered by card)
 

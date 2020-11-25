@@ -6,7 +6,7 @@ class SimpleLibraryCatalog{
 
     public static void main(String args[]){
 
-        //createBookTree("2213.mrc"); 
+        createBookTree("2213.mrc"); 
 
          processLibrary();
        
@@ -20,7 +20,7 @@ class SimpleLibraryCatalog{
     public static void createBookTree(String fileName){
         int count = 0; //For counting records
 
-        HashMap<String, String> book;  
+        Book book; 
            
         MarcImport mi = new MarcImport();
         
@@ -40,11 +40,11 @@ class SimpleLibraryCatalog{
             book = mi.getBookData(record);
 
             //I am printing out the available values.
-            //Delete these print statements and put the key and value into your data structure.
-            System.out.println(book.get("title"));
-            System.out.println(book.get("author"));
-            System.out.println(book.get("loc_call_number") + "\n");
-            System.out.println(book.get("description"));
+            //The book is a hashmap of the following values.
+            System.out.println(book.title);
+            System.out.println(book.author);
+            System.out.println(book.loc + "\n");
+            System.out.println(book.description);
             //book.get("available"); true or false string
             //book.get("user_id"); id string from user record.
             

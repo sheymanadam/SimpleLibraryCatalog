@@ -35,7 +35,7 @@ class MarcImport{
         }
     }
 
-    public HashMap<String, String> getBookData(Record r){
+    public Book getBookData(Record r){
 
         /*
             050 = LOC call number
@@ -44,7 +44,7 @@ class MarcImport{
             520 = description
         */
         String[] tags = {"050","245", "520"};
-        HashMap<String, String> book = new HashMap<String, String>();
+        Book book = new Book();
         List fields = r.getVariableFields(tags);
         DataField field;
         for(int idx = 0; idx < fields.size(); idx++){
@@ -56,25 +56,25 @@ class MarcImport{
                 Subfield subfield = (Subfield)i.next();
                 if(field.getTag().equals("245")){
                     if(subfield.getCode() == 'a'){
-                        book.put("title", subfield.getData());
+                        book.title = subfield.getData();
                     }else if(subfield.getCode() == 'c'){
-                        book.put("author", subfield.getData());
+                        book.author = subfield.getData();
                     }
                 }
 
                 if(field.getTag().equals("520")){
-                    book.put("description", subfield.getData());
+                    book.description = subfield.getData();
                 }
                 if(field.getTag().equals("050")){
-                    book.put("loc_call_number", subfield.getData());
+                    book.loc = subfield.getData();
                 }
                 
         
             }
         }
         //We need a couple of standard fields:
-        book.put("available", "true");
-        book.put("patron_id", "");
+        book.available = true;
+        book.patron_id = "";
         return book;
     }
 

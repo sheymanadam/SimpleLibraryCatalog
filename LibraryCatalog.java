@@ -1,7 +1,7 @@
 interface LibraryCatalog{
 
     //Returns true for success, false for failure
-    public abstract boolean deleteBook();
+    public abstract boolean deleteBook(String loc);
 
     //Returns true for success, false for failure
     public abstract boolean addBook();

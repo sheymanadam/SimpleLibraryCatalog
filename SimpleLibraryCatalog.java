@@ -89,14 +89,15 @@ class SimpleLibraryCatalog {
         printMainMenu();
        
         Class<?> clazz = object.getClass();
+        
         Method addBook = clazz.getMethod("addBook");
-        Method deleteBook = clazz.getMethod("deleteBook");
-
+        
         Class[] cArg = new Class[1];
         cArg[0] = String.class;
 
         Method searchBook = clazz.getMethod("searchBook", cArg);
-       
+        Method deleteBook = clazz.getMethod("deleteBook", cArg);
+
         Scanner scan = new Scanner(System.in);  
         while(answer.equals("quit") != true){
             System.out.print("Enter command:> ");
@@ -118,10 +119,15 @@ class SimpleLibraryCatalog {
                     addBook.invoke(object);  
                     break;
                 case "delete book":
-                    deleteBook.invoke(object);  
+                    System.out.print("Enter title to search for:>> ");
+                    String deleteTitle = scan.nextLine(); 
+                    searchBook.invoke(object, deleteTitle);
+                    System.out.print("Now, enter call number for book to delete:>> ");
+                    String loc = scan.nextLine();   
+                    deleteBook.invoke(object, loc);  
                     break;
                 case "search book":
-                    System.out.print("Enter title to serch for:>> ");
+                    System.out.print("Enter title to search for:>> ");
                     String title = scan.nextLine();   
                     searchBook.invoke(object, title);
                     break;

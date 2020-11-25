@@ -2,7 +2,8 @@
 class HashCatalog implements LibraryCatalog{
 
     @Override
-    public boolean deleteBook(){
+    public boolean deleteBook(String loc){
+        System.out.println("Delete book with loc of "+loc);
         return true;
     }
 

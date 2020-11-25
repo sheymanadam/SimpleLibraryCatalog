@@ -78,5 +78,4 @@ class MarcImport{
         return book;
     }
 
-
 }

@@ -1,13 +1,14 @@
 import org.marc4j.MarcReader;
 import org.marc4j.marc.Record;
-
 import java.util.*;
 
 class SimpleLibraryCatalog{
 
     public static void main(String args[]){
 
-       createBookTree("2213.mrc"); 
+        //createBookTree("2213.mrc"); 
+
+         processLibrary();
        
     }
 
@@ -52,6 +53,63 @@ class SimpleLibraryCatalog{
             if(count == 500) break;
             count++;
         }
+    }
+
+    public static void printMainMenu(){
+            String menu = 
+                "\n-------Main Menu--------\n"
+            +   "add user: Add a new patron\n"
+            +   "delete user: Delete a patron\n"
+            +   "search user: Search for a patron\n"
+            +   "add book: Add a new book\n"
+            +   "delete book: Delete a book\n"
+            +   "search book: Search for a book\n"
+            +   "help: Print this menu\n"
+            +   "\n";
+
+            System.out.println(menu);
+    }
+
+    /*
+        Work horse for processing user input.
+        
+    */
+    public static void processLibrary(){     
+        
+        String answer = "";
+        printMainMenu();
+        Scanner scan = new Scanner(System.in);  
+        while(answer.equals("quit") != true){
+            System.out.print("Enter command:> ");
+            answer = scan.nextLine();
+            switch(answer.toLowerCase()){
+                case "help":
+                    printMainMenu();
+                    break;
+                case "add patron":
+                    //addPatron();
+                    break;
+                case "delete patron":
+                    //deletePatron();
+                    break;
+                case "search patron":
+                    //searchPatron();
+                    break;
+                case "add book":
+                    //book.addBook();
+                    break;
+                case "delete book":
+                    //book.deleteBook();
+                    break;
+                case "search book":
+                    //book.searchBook();
+                    break;
+                default:
+                    printMainMenu();
+            }
+
+        }
+        scan.close();
     }
 }
 

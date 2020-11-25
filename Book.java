@@ -4,5 +4,5 @@ public class Book {
     public String loc; //Libreary of congress card catalog number.
     public String description;
     public boolean available;
-    public String patron_id;
+    public String patronId;
 }

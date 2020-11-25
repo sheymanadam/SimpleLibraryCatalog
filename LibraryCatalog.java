@@ -7,7 +7,7 @@ interface LibraryCatalog{
     public abstract boolean addBook();
 
     //Return a book object.
-    public abstract Book searchBook();
+    public abstract Book searchBook(String title);
 
 
 }

@@ -15,12 +15,31 @@ import java.util.*;
 
 class MarcImport{
     InputStream in = null;
+    MarcReader reader;
+    Record record;
+
+    /** 
+        @param Filename to open.
+        @return A stream to the records contained in marcFileName.
+    */
+    MarcImport(String marcFileName){
+        reader = getRecordStream(marcFileName);
+    }
+    
+    public Book getNextRecord(){
+        record = reader.next();
+        return getBookData(record);
+    }
+    
+    public boolean hasNext(){
+        return reader.hasNext();
+    }
 
     public MarcReader getRecordStream(String marcFileName){
      
         try{
             in = new FileInputStream("import/" + marcFileName); //(currentDir + "/" + marcFileName);
-            MarcReader reader = new MarcStreamReader(in);
+            reader = new MarcStreamReader(in);
             return reader;
         }catch(FileNotFoundException e){
             System.out.println("Could not find the file " + marcFileName);
@@ -68,13 +87,11 @@ class MarcImport{
                 if(field.getTag().equals("050")){
                     book.loc = subfield.getData();
                 }
-                
-        
             }
         }
         //We need a couple of standard fields:
         book.available = true;
-        book.patron_id = "";
+        book.patronId = "";
         return book;
     }
 

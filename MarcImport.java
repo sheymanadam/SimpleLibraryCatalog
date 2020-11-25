@@ -90,8 +90,9 @@ class MarcImport{
             }
         }
         //We need a couple of standard fields:
-        book.available = true;
+        book.available = "true";
         book.patronId = "";
+        
         return book;
     }
 

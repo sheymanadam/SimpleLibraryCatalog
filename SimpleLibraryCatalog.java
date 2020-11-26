@@ -49,7 +49,7 @@ class SimpleLibraryCatalog {
                  book.description;
                  book.available; true or false string
                  patronId; id string from user record.
-            */
+            */ 
             libraryDataObject.addBook(book);
     
             // Do this if you only want a certain number of records.

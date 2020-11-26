@@ -85,7 +85,9 @@ class MarcImport{
                     book.description = subfield.getData();
                 }
                 if(field.getTag().equals("050")){
-                    book.loc = subfield.getData();
+                    if(subfield.getCode() == 'a'){
+                        book.loc = subfield.getData();
+                    }
                 }
             }
         }

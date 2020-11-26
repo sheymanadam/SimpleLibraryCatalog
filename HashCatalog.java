@@ -1,13 +1,11 @@
 
 import java.util.HashMap;
-import java.util.Set;
 
 class HashCatalog implements LibraryCatalog{
-    HashMap<Integer, HashMap<String, String>> catalog;
-    Integer curBookId = 0; //Will ultimately hold the last record id. Inc it will give us a new one when adding.
+    HashMap<String, HashMap<String, String>> catalog;
 
-    public void LibraryCatalog(){
-        catalog = new HashMap<Integer, HashMap<String, String>>();
+    public HashCatalog(){
+        catalog = new HashMap<String, HashMap<String, String>>();
     }
 
     @Override
@@ -20,10 +18,10 @@ class HashCatalog implements LibraryCatalog{
     public Book searchBook(String title){
         Book book = new Book();
         
-        Set<Integer> keys = catalog.keySet();
+        /* Set<Integer> keys = catalog.keySet();
         for(Integer key: keys){
         
-        }
+        } */
         
 
         return book;
@@ -37,9 +35,17 @@ class HashCatalog implements LibraryCatalog{
         hashBook.put("author", book.author);
         hashBook.put("available", "true");
         hashBook.put("patronId", "");
-        System.out.println(hashBook);
+        
         try{
-            catalog.put(curBookId, hashBook);
+            if(hashBook.containsKey(book.loc)){
+                //This will be an exception later on.
+                System.out.println("This book already exists");
+            }else{
+                  catalog.put(book.loc, hashBook);
+            }
+        }catch(NullPointerException e){
+            System.out.println("I got a null pointer in addBook.");
+            return false;
         }catch(Exception e){
             System.out.println(e.getMessage());
             return false;

@@ -1,5 +1,7 @@
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 class HashCatalog implements LibraryCatalog{
     HashMap<String, HashMap<String, String>> catalog;
@@ -15,15 +17,32 @@ class HashCatalog implements LibraryCatalog{
     }
 
     @Override
-    public Book searchBook(String title){
-        Book book = new Book();
-        
-        /* Set<Integer> keys = catalog.keySet();
-        for(Integer key: keys){
-        
-        } */
-        
+    public String searchBook(String title){
+        String book = "";
+        Iterator<Map.Entry<String, HashMap<String, String>>> entrySet = 
+            catalog.entrySet().iterator();
 
+        while(entrySet.hasNext()){
+            Map.Entry<String, HashMap<String, String>> entry = 
+                entrySet.next();
+            HashMap<String, String> hashBook = new HashMap<String, String>();
+            hashBook = entry.getValue();
+            if(hashBook.get("title").toLowerCase() == title.toLowerCase()){
+                //book.title = hashBook.get("title");
+                //book.author = hashBook.get("author");
+                //book.description = hashBook.get("description");
+                //book.loc = entry.getKey();
+                //book.patronId = hashBook.get("patronId");
+                //book.available = hashBook.get("available");
+                book = entry.getKey()+" "
+                +hashBook.get("title")+" "
+                +hashBook.get("description")+" "
+                +hashBook.get("author")+" "
+                +hashBook.get("avalable")+" "
+                +hashBook.get("patronId")+" ";
+                return book;
+            }
+        }
         return book;
     }
 

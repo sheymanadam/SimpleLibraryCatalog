@@ -83,7 +83,8 @@ class SimpleLibraryCatalog {
 
     /*
      * Work horse for processing user input.
-     * 
+     * If there is something not to your liking PLEASE ask me or 
+     * add it. There should only be one function like this.
      */
     public static void processLibrary(Object object) throws NoSuchMethodException, SecurityException,
             IllegalAccessException, IllegalArgumentException, InvocationTargetException {
@@ -105,6 +106,7 @@ class SimpleLibraryCatalog {
         Method addBook = clazz.getMethod("addBook", cArg2);
                 
         Scanner scan = new Scanner(System.in);  
+
         while(answer.equals("quit") != true){
             System.out.print("Enter command:> ");
             answer = scan.nextLine();
@@ -123,6 +125,16 @@ class SimpleLibraryCatalog {
                     break;
                 case "add book":
                     Book book = new Book();
+                    System.out.print("LOC: ");
+                    book.loc = scan.nextLine();
+                    System.out.print("Title: ");
+                    book.title = scan.nextLine();
+                    System.out.print("Description: ");
+                    book.description = scan.nextLine();
+                    System.out.print("Author: ");
+                    book.author = scan.nextLine();
+                    book.available = "true";
+                    book.patronId = "";
                     addBook.invoke(object, book);  
                     break;
                 case "delete book":
@@ -136,7 +148,7 @@ class SimpleLibraryCatalog {
                 case "search book":
                     System.out.print("Enter title to search for:>> ");
                     String title = scan.nextLine();   
-                    searchBook.invoke(object, title);
+                    System.out.println(searchBook.invoke(object, title));
                     break;
                 default:
                     printMainMenu();
